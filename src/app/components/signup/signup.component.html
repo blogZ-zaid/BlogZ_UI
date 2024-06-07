@@ -1,0 +1,36 @@
+<div id="mainDiv" class="mainDiv">
+  <div id="mainContainer" class="mainContainer">
+    <h1>Signup</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="submit()">
+      <label for="fullName">Full Name</label>
+      <input type="text" formControlName="fullName" />
+      <div *ngIf="fullName?.touched && fullName?.invalid" class="alert alert-danger">
+        <div *ngIf="fullName?.errors?.['required']">FullName is required</div>
+        <div *ngIf="fullName?.errors?.['noNumericValidator']">Numbers are not allowed</div>
+      </div>
+
+      <label for="email">Email address</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="email?.touched && email?.invalid" class="alert alert-danger">
+        <div *ngIf="email?.errors?.['required']">Email is required</div>
+        <div *ngIf="email?.errors?.['email']">Please enter a valid email</div>
+      </div>
+
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" formControlName="phoneNumber" />
+      <div *ngIf="phoneNumber?.touched && phoneNumber?.invalid" class="alert alert-danger">
+        <div *ngIf="phoneNumber?.errors?.['required']">Phone Number is required</div>
+        <div *ngIf="phoneNumber?.errors?.['pattern']">Please enter the phone in XXX-XXX-XXXX format</div>
+      </div>
+
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" />
+      <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">Password is required</div>
+
+      <button type="submit" class="btn signUpBtn" [disabled]="!signupForm.valid">Signup</button>
+    </form>
+    <div id="loginLink" class="loginLink">
+      <p>Already have an Account? Click here to <a routerLink="/login">Login</a></p>
+    </div>
+  </div>
+</div>
