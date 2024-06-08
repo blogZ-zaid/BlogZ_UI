@@ -5,14 +5,13 @@ import { environment } from '../environment/environement';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class PostService {
 
-  
   constructor(private http: HttpClient) {}
   baseUrl: string = environment.backend.baseURL;
 
 
-  login(userData: any) {
-    return this.http.post(`${this.baseUrl}` + '/login', userData,{withCredentials: true})
+  addPost(userData: any) {
+    return this.http.post(`${this.baseUrl}` + '/addPost', userData,{withCredentials: true})
   }
 }

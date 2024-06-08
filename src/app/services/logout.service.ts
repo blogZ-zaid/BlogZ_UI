@@ -5,14 +5,15 @@ import { environment } from '../environment/environement';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LogoutService {
 
-  
   constructor(private http: HttpClient) {}
+
   baseUrl: string = environment.backend.baseURL;
 
+ 
 
-  login(userData: any) {
-    return this.http.post(`${this.baseUrl}` + '/login', userData,{withCredentials: true})
+  logout() {
+    return this.http.get(`${this.baseUrl}/logout`, { withCredentials: true });
   }
 }

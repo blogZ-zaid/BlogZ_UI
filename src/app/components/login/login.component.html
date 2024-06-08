@@ -13,7 +13,7 @@
         <input type="password" formControlName="password" />
         <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">Password is required</div>
        
-        <button type="submit" class="loginBtn" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" class="btn loginBtn" [disabled]="!loginForm.valid">Login</button>
       </form>
       <div id="signupLink" class="signupLink">
         <p>Don't have an Account. Click here to<a routerLink="/signup"> Signup</a></p>

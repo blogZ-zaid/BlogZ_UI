@@ -1,1 +1,19 @@
-<p>add-post works!</p>
+<div id="mainDiv" class="mainDiv">
+    <div id="mainContainer" class="mainContainer">
+      <form [formGroup]="addPostForm" (ngSubmit)="submit()">
+        <label for="title">Title</label>
+        <input type="text" formControlName="title" />
+        <div *ngIf="title?.touched && title?.invalid" class="alert alert-danger">
+          <div *ngIf="title?.errors?.['required']">Title is required</div>
+        </div>
+
+        <label for="description">Description</label>
+        <textarea formControlName="description"></textarea>
+        <div *ngIf="description?.touched && description?.invalid" class="alert alert-danger">Description is required</div>
+       
+        <button type="submit" class="btn addPost" [disabled]="!addPostForm.valid">Post</button>
+      </form>
+
+    </div>
+  </div>
+  

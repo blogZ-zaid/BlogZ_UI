@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { HomeComponent } from './components/home/home.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostService } from './services/post.service';
+import { LogoutService } from './services/logout.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AddPostComponent } from './components/add-post/add-post.component';
   ],
   providers: [
     SignupService,
-    LoginService
+    LoginService,
+    PostService,
+    LogoutService
   ],
   bootstrap: [AppComponent]
 })
