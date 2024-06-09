@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
     backend: {
-      baseURL:"http://localhost:4000/api"
+      baseURL:"https://blogz-backend.onrender.com/api"
     }
   };
