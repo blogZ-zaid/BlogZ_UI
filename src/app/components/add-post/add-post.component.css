@@ -39,15 +39,12 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
-  
-  
 
     /* Mobile View */
 @media screen and (max-width: 768px) {
   #mainContainer {
     margin: 2.5vh;
-    margin-top: 25vh; 
+    margin-top: 20vh; 
   }
 }
   

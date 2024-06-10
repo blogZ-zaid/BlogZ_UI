@@ -60,7 +60,7 @@
   /* Mobile View */
 @media screen and (max-width: 768px) {
   #mainContainer {
-    margin: 2.5vh;
-    margin-top: 20vh; 
+    margin: 1.5vh;
+    margin-top: 15vh; 
   }
 }
