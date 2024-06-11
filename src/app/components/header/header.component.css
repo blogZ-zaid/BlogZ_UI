@@ -25,6 +25,7 @@
   .nav-text {
     display: none;
     color: black;
+    font-size: 16px;
   }
   
   /* Display text on larger screens */
@@ -32,5 +33,9 @@
     .nav-text {
       display: inline;
     }
+    .nav-icon {
+        font-size: 24px; /* Adjust the font size as needed */
+      }
+    
   }
   
