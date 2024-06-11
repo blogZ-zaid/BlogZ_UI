@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="toolbar">
+    <div class="nav-container">
+      <span class="nav-item">
+        <button mat-button routerLink="/home">
+          <mat-icon class="nav-icon">home</mat-icon>
+          <span class="nav-text">Home</span>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button mat-button routerLink="/addPost">
+          <mat-icon class="nav-icon">post_add</mat-icon>
+          <span class="nav-text">Add Post</span>
+        </button>
+      </span>
+      <span class="nav-item">
+        <button mat-button routerLink="/profile">
+          <mat-icon class="nav-icon">person</mat-icon>
+          <span class="nav-text">Profile</span>
+        </button>
+      </span>
+      <span class="nav-item" *ngIf="authService.isAuthenticated()">
+        <button mat-button routerLink="/logout">
+          <mat-icon class="nav-icon">logout</mat-icon>
+          <span class="nav-text">Logout</span>
+        </button>
+      </span>
+    </div>
+  </mat-toolbar>
+  

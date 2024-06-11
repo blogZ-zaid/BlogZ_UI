@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { UserState } from '../../states/user.state';
+import { Store, select } from '@ngrx/store';
+import { selectUserId } from '../../states/user.selectors';
+
 
 @Component({
   selector: 'app-add-post',
@@ -18,10 +22,17 @@ export class AddPostComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private postService: PostService
+    private postService: PostService,
+    private store: Store<UserState>
   ) {}
 
-  ngOnInit(): void {}
+  userId: string="";
+
+  ngOnInit(): void {
+    this.store.pipe(select(selectUserId)).subscribe(userId => {
+      this.userId = userId!;
+    });
+  }
 
   get title() {
     return this.addPostForm.get('title');
@@ -36,7 +47,8 @@ export class AddPostComponent implements OnInit {
       const userData = {
         title: this.addPostForm.value.title,
         description: this.addPostForm.value.description,
-        privacy: this.addPostForm.value.privacy // Change visibility to privacy in the submitted data
+        privacy: this.addPostForm.value.privacy, // Change visibility to privacy in the submitted data
+        userId: this.userId 
       };
 
       this.postService.addPost(userData).subscribe(

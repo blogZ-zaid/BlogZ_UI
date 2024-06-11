@@ -1,0 +1,36 @@
+/* Change the background color of the toolbar */
+.toolbar {
+    background-color: #ffc845; /* Change to your desired color */
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  /* Default styles for text and icons */
+  .nav-icon {
+    margin-right: 8px;
+    color: black;
+  }
+  
+  /* Hide text on small screens */
+  .nav-text {
+    display: none;
+    color: black;
+  }
+  
+  /* Display text on larger screens */
+  @media (min-width: 600px) {
+    .nav-text {
+      display: inline;
+    }
+  }
+  

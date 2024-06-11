@@ -12,7 +12,17 @@ import { LoginService } from './services/login.service';
 import { HomeComponent } from './components/home/home.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { PostService } from './services/post.service';
-import { LogoutService } from './services/logout.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { HeaderComponent } from './components/header/header.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './components/auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './states/user.reducer';
 
 @NgModule({
   declarations: [
@@ -20,20 +30,29 @@ import { LogoutService } from './services/logout.service';
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    AddPostComponent
+    AddPostComponent,
+    HeaderComponent,
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    StoreModule.forRoot({ user: userReducer })
   ],
   providers: [
     SignupService,
     LoginService,
     PostService,
-    LogoutService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

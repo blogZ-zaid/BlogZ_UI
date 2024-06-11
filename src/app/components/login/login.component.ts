@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { SignupService } from '../../services/signup.service';
 import { CustomValidators } from '../../validations/CustomValidator';
 import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
+import { setUserId } from '../../states/user.actions';
+import { Store } from '@ngrx/store';
+import { UserState } from '../../states/user.state';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +28,9 @@ export class LoginComponent implements OnInit {
 
 constructor(
   private router: Router,
-  private loginService:LoginService
+  private loginService:LoginService,
+  private authService: AuthService,
+  private store: Store<UserState>
 ) {}
 
 ngOnInit(): void {}
@@ -51,6 +57,12 @@ submit(): void {
         } else if (response.message === "User not found") {
           alert("User does not exist");
         } else if (response.userData) {
+          this.authService.login();
+
+          // Dispatch setUserId action with user ID
+          const userId = response.userData._id; // Assuming the user ID is in response.userData.id
+          this.store.dispatch(setUserId({ userId }));
+
           this.router.navigate(['/home']);
         }
       },
