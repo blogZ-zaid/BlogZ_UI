@@ -1,2 +1,30 @@
-
-<p>profile works!</p>
+<div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img src="assets/dp.jpg" alt="Profile Picture">
+      </div>
+      <div class="profile-info">
+        <h2>{{ fullName }}</h2>
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="number">{{ postsCount }}</span>
+            <span class="label">Posts</span>
+          </div>
+          <div class="stat">
+            <span class="number">{{ followersCount }}</span>
+            <span class="label">Followers</span>
+          </div>
+          <div class="stat">
+            <span class="number">{{ followingCount }}</span>
+            <span class="label">Following</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-posts">
+      <div class="post" *ngFor="let post of posts">
+        <img [src]="post.image" alt="Post Image">
+      </div>
+    </div>
+  </div>
+  

@@ -7,6 +7,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthGuard } from './components/auth.guard';
+import { ExploreComponent } from './components/explore/explore.component';
 
 const routes: Routes = [
    {path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect the empty path to the login page
@@ -14,6 +15,7 @@ const routes: Routes = [
    {path:'login',component:LoginComponent},
    {path:'home',component:HomeComponent,canActivate: [AuthGuard]},
    {path:'addPost',component:AddPostComponent,canActivate: [AuthGuard]},
+   {path:'explore',component:ExploreComponent,canActivate: [AuthGuard]},
    {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
    {path:'logout',component:LogoutComponent,canActivate: [AuthGuard]},
 ];

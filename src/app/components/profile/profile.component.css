@@ -1,0 +1,162 @@
+/* Common Styles */
+.profile-container {
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    .profile-container {
+      max-width: 1200px;
+    }
+  
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .profile-picture {
+      flex: 0 0 150px;
+      height: 150px;
+      width: 150px;
+     
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-right: 30px;
+    }
+  
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .profile-info {
+      text-align: left;
+    }
+  
+    .profile-info h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    .profile-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 10px;
+    }
+  
+    .stat {
+      text-align: center;
+    }
+  
+    .stat .number {
+      display: block;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .stat .label {
+      font-size: 16px;
+      color: #888;
+    }
+  
+    .profile-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+  
+    .profile-posts .post img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 767px) {
+    .profile-container {
+      max-width: 800px;
+    }
+  
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .profile-picture {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 150px;
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+  
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .profile-info {
+      text-align: center;
+    }
+  
+    .profile-info h2 {
+      margin: 0 0 10px;
+    }
+  
+    .profile-stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+  
+    .stat {
+      text-align: center;
+    }
+  
+    .stat .number {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+    .stat .label {
+      font-size: 14px;
+      color: #888;
+    }
+  
+    .profile-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+  
+    .profile-posts .post img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+    

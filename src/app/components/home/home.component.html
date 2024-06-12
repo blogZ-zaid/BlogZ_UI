@@ -1,4 +1,16 @@
-
-<div class="container text-center">
-   <p>Home Component</p>
-</div>
+<div class="post-container">
+   <h2>Public Posts</h2>
+   <div *ngIf="allPublicPosts.length > 0; else noPosts">
+     <div *ngFor="let post of allPublicPosts" class="post-card">
+       <div class="post-details">
+         <h3>{{ post.title }}</h3>
+         <p>{{ post.description }}</p>
+         <p class="post-date">Posted on: {{ post.date | date:'medium' }}</p>
+       </div>
+     </div>
+   </div>
+   <ng-template #noPosts>
+     <p>No public posts available.</p>
+   </ng-template>
+ </div>
+ 

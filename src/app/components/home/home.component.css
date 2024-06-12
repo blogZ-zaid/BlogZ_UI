@@ -1,11 +1,27 @@
-.logoutBtn{
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #ffc845;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.post-card {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.post-details h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.post-details p {
+  color: #666;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #999;
+}

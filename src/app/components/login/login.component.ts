@@ -5,7 +5,7 @@ import { SignupService } from '../../services/signup.service';
 import { CustomValidators } from '../../validations/CustomValidator';
 import { LoginService } from '../../services/login.service';
 import { AuthService } from '../../services/auth.service';
-import { setUserId } from '../../states/user.actions';
+import { setEmail, setFullName, setPhoneNumber, setUserId } from '../../states/user.actions';
 import { Store } from '@ngrx/store';
 import { UserState } from '../../states/user.state';
 
@@ -61,8 +61,15 @@ submit(): void {
 
           // Dispatch setUserId action with user ID
           const userId = response.userData._id; // Assuming the user ID is in response.userData.id
-          this.store.dispatch(setUserId({ userId }));
+          const fullName = response.userData.fullName;
+          const phoneNumber = response.userData.phoneNumber;
+          const email = response.userData.email;
 
+          this.store.dispatch(setUserId({ userId }));
+          this.store.dispatch(setFullName({ fullName}));
+          this.store.dispatch(setEmail({ email} ));
+          this.store.dispatch(setPhoneNumber({ phoneNumber }));
+         
           this.router.navigate(['/home']);
         }
       },

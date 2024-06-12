@@ -23,6 +23,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './components/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './states/user.reducer';
+import { ExploreComponent } from './components/explore/explore.component';
+import { ExploreService } from './services/explore.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { userReducer } from './states/user.reducer';
     AddPostComponent,
     HeaderComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { userReducer } from './states/user.reducer';
     LoginService,
     PostService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ExploreService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,4 +14,8 @@ export class PostService {
   addPost(userData: any) {
     return this.http.post(`${this.baseUrl}` + '/addPost', userData,{withCredentials: true})
   }
+
+  getAllPublicPost() {
+    return this.http.get(`${this.baseUrl}` + '/getAllPublicPost',{withCredentials: true})
+  }
 }
