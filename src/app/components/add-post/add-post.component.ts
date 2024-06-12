@@ -6,27 +6,28 @@ import { UserState } from '../../states/user.state';
 import { Store, select } from '@ngrx/store';
 import { selectUserId } from '../../states/user.selectors';
 
-
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
-
+  
   addPostForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     privacy: new FormControl('everyone') // Change visibility to privacy with default value
   });
 
+  userId: string = "";
+  selectedFile: File | null = null;
+  previewUrl: any = null;
+
   constructor(
     private router: Router,
     private postService: PostService,
     private store: Store<UserState>
   ) {}
-
-  userId: string="";
 
   ngOnInit(): void {
     this.store.pipe(select(selectUserId)).subscribe(userId => {
@@ -42,6 +43,26 @@ export class AddPostComponent implements OnInit {
     return this.addPostForm.get('description');
   }
 
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length) {
+      this.selectedFile = event.target.files[0];
+      this.preview();
+    }
+  }
+
+  preview() {
+    const mimeType = this.selectedFile?.type;
+    if (!mimeType?.startsWith('image/')) {
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile!);
+    reader.onload = () => {
+      this.previewUrl = reader.result;
+    };
+  }
+
   submit(): void {
     if (this.addPostForm.valid) {
       const userData = {
@@ -51,7 +72,16 @@ export class AddPostComponent implements OnInit {
         userId: this.userId 
       };
 
-      this.postService.addPost(userData).subscribe(
+      const formData = new FormData();
+      formData.append('title', userData.title!);
+      formData.append('description', userData.description!);
+      formData.append('privacy', userData.privacy!);
+      formData.append('userId', userData.userId);
+      if (this.selectedFile) {
+        formData.append('image', this.selectedFile);
+      }
+
+      this.postService.addPost(formData).subscribe(
         (response: any) => {
           console.log("Note Added Response");
           console.log(response);
@@ -66,5 +96,4 @@ export class AddPostComponent implements OnInit {
       );
     }
   }
-
 }
