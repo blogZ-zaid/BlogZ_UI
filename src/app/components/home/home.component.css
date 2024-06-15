@@ -2,21 +2,89 @@
   margin: 20px;
 }
 
-.post-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
+.posts-grid {
+  display: grid;
+  gap: 20px;
+  justify-content: center; /* Center posts */
 }
 
-.post-details {
-  margin: 10px;
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Set a maximum width for desktop */
+  width: 100%; /* Make sure it takes full width on smaller screens */
+}
+
+.post-header {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.post-body {
+  padding: 15px;
+  flex: 1;
+}
+
+.post-body p {
+  margin: 10px 0 0; /* Add margin-top to create space between image and text */
+}
+
+.post-image-container {
+  margin: 0; /* Remove margin for image container */
 }
 
 .post-image {
-  max-width: 50%;
+  width: 100%;
   height: auto;
-  margin-top: 10px;
+  object-fit: cover;
+  margin-bottom: 15px; /* Add bottom margin to create space between image and description */
+}
+
+.post-footer {
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+}
+
+.post-date {
+  margin: 0;
+  font-size: 14px;
+  color: #6c757d;
+}
+.goToPost{
+  padding: 10px 12px;
+  background-color: #a11321;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goToPost:hover{
+  background-color: white;
+  color: #a11321;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .posts-grid {
+    grid-template-columns: 1fr; /* Display one post per row */
+  }
+
+  .post-card {
+    margin: 0 auto; /* Center the post card */
+  }
 }

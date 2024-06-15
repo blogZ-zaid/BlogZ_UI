@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
         console.log("All Public Response");
         console.log(response);
         if (response.message === "No Posts") {
-          alert("No posts yet");
         } else {
           this.allPublicPosts = response.allPublicPosts.map((post: Post) => ({
             ...post,

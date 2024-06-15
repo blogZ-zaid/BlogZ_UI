@@ -1,6 +1,6 @@
 /* Change the background color of the toolbar */
 .toolbar {
-    background-color: #ffc845; /* Change to your desired color */
+    background-color: #a11321; /* Change to your desired color */
   }
   
   .nav-container {
@@ -18,13 +18,13 @@
   /* Default styles for text and icons */
   .nav-icon {
     margin-right: 8px;
-    color: black;
+    color: white;
   }
   
   /* Hide text on small screens */
   .nav-text {
     display: none;
-    color: black;
+    color: white;
     font-size: 16px;
   }
   

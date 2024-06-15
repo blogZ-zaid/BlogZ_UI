@@ -1,18 +1,29 @@
 <div class="post-container">
-  <h2>Public Posts</h2>
-  <div *ngIf="allPublicPosts.length > 0; else noPosts">
+  <div *ngIf="allPublicPosts.length > 0; else noPosts" class="posts-grid">
     <div *ngFor="let post of allPublicPosts" class="post-card">
-      <div class="post-details">
+      <div class="post-header">
         <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
-        <p class="post-date">Posted on: {{ post.date }}</p>
-        <div *ngIf="post.image">
+      </div>
+      <div class="post-body">
+        <div *ngIf="post.image" class="post-image-container">
           <img [src]="post.image" [alt]="post.title" class="post-image">
         </div>
+        <p>{{ post.description }}</p>
+      </div>
+      <div class="post-footer">
+        <p class="post-date">Posted on: {{ post.date }}</p>
       </div>
     </div>
   </div>
   <ng-template #noPosts>
-    <p>No public posts available.</p>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-center m-4">
+        <p class="mb-3">You don't have any posts. Start posting.</p>
+        <a routerLink="/addPost" class="btn goToPost btn-primary">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
+    </div>
   </ng-template>
+  
 </div>
