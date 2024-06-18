@@ -25,6 +25,7 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './states/user.reducer';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ExploreService } from './services/explore.service';
+import { ProfileService } from './services/profile.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ExploreService } from './services/explore.service';
     PostService,
     AuthService,
     AuthGuard,
-    ExploreService
+    ExploreService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { UserState } from '../../states/user.state';
-import { selectUserProfile } from '../../states/user.selectors';
+import { selectUserId } from '../../states/user.selectors';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,30 +10,37 @@ import { selectUserProfile } from '../../states/user.selectors';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  username: string = 'Username';
-  postsCount: number = 0;
-  followersCount: number = 0;
-  followingCount: number = 0;
-  posts: any[] = [];
-  fullName: string | null = '';
-  email: string | null = '';
-  phoneNumber: string | null = '';
-
-  constructor(private store: Store<UserState>) {}
+  userId: string = "";
+  userProfile:any;
+  constructor(
+      private store: Store<UserState>,
+      private profilesService:ProfileService
+    ) {}
 
   ngOnInit(): void {
-    this.store.pipe(select(selectUserProfile)).subscribe(profile => {
-      if (profile) {
-        console.log("Profile",profile);
-        this.fullName = profile.fullName;
-        this.email = profile.email;
-        this.phoneNumber = profile.phoneNumber;
-        // Assume that posts, followersCount, and followingCount are part of the user profile
-        this.posts = []; // Update this with actual data fetching logic
-        this.postsCount = this.posts.length;
-        this.followersCount = 0; // Update this with actual data fetching logic
-        this.followingCount = 0; // Update this with actual data fetching logic
-      }
+    this.store.pipe(select(selectUserId)).subscribe(userId => {
+      this.userId = userId!;
     });
+
+    this.profilesService.getUserProfile(this.userId).subscribe(
+      (response: any) => {
+        console.log("User Profile");
+        
+        if(response.message === "User Not Found"){
+          alert("User Not Found")
+        }
+        else{
+          this.userProfile=response.userObj;
+          console.log(this.userProfile);
+        }
+        
+      },
+      error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+      }
+    )
+
+
   }
 }

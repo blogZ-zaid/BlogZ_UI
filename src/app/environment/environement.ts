@@ -3,9 +3,9 @@ export const environment = {
     backend: {
 
       // For Live
-     baseURL:"https://blogz-backend.onrender.com/api"
+    // baseURL:"https://blogz-backend.onrender.com/api"
       
       // For Development
-   //   baseURL:"http://localhost:4000/api"
+      baseURL:"http://localhost:4000/api"
     }
   };

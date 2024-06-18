@@ -46,9 +46,29 @@ export class ExploreComponent implements OnInit{
   }
 
   followUser(user: any): void {
-    // Implement the follow user logic here
     console.log('Follow user:', user);
-    // You can call a service method to handle the follow action
+    let followRequestData={
+        userId:this.userId,
+        followUserId:user.id,
+        followUserName:user.fullName
+    }
+    this.exploreService.sendFollowRequest(followRequestData).subscribe(
+      (response: any) => {
+        console.log("Follow Request Response");
+        console.log(response);
+        if(response.message === "User not found"){
+          alert("User not found")
+        }
+        else{
+           console.log("Follow request sent successfully");
+        }
+        
+      },
+      error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+      }
+    );
   }
 
 }

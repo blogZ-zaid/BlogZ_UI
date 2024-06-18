@@ -1,23 +1,19 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environment/environement';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environement';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExploreService {
+export class ProfileService {
 
   constructor(private http: HttpClient) {}
   baseUrl: string = environment.backend.baseURL;
 
-  getAllUsers(userId:string): Observable<any> {
-    const url = `${this.baseUrl}/getAllUsers`; 
+  getUserProfile(userId:string): Observable<any> {
+    const url = `${this.baseUrl}/userProfile`; 
     const params = new HttpParams().set('userId', userId); 
     return this.http.get(url, { params });
-  }
-
-  sendFollowRequest(data:any):Observable<any>{
-    return this.http.post(`${this.baseUrl}` + '/sendFollowRequest', data,{withCredentials: true})
   }
 }
