@@ -1,3 +1,4 @@
+/* Common Styles */
 .post-container {
   margin: 20px;
 }
@@ -9,35 +10,35 @@
 }
 
 .post-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #003B49; /* Red border */
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  max-width: 600px; /* Set a maximum width for desktop */
-  width: 100%; /* Make sure it takes full width on smaller screens */
+  box-shadow: 0 0 20px #0003;
+  background-color: #fff; /* White background */
+  width: 100%;
+  max-width: 600px; /* Limit the maximum width for desktop */
+  margin-bottom: 15px;
 }
 
 .post-header {
   padding: 15px;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
+  background-color: #fff; /* Light gray background */
+  border-bottom: 1px solid #003B49;
 }
 
 .post-header h3 {
   margin: 0;
   font-size: 18px;
+  color: #003B49; /* Red text color */
 }
 
 .post-body {
   padding: 15px;
-  flex: 1;
 }
 
 .post-body p {
   margin: 10px 0 0; /* Add margin-top to create space between image and text */
+  color: #333; /* Dark text color */
 }
 
 .post-image-container {
@@ -48,21 +49,22 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  margin-bottom: 15px; /* Add bottom margin to create space between image and description */
+  border-radius: 15px 15px 0 0; /* Rounded corners at the top */
 }
 
 .post-footer {
   padding: 10px 15px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
+  background-color: #fff; /* Light gray background */
+  border-top: 1px solid #003B49;
 }
 
 .post-date {
   margin: 0;
   font-size: 14px;
-  color: #6c757d;
+  color: #333; /* Lighter text color */
 }
-.goToPost{
+
+.goToPost {
   padding: 10px 12px;
   background-color: #a11321;
   color: white;
@@ -73,9 +75,9 @@
   transition: background-color 0.3s ease;
 }
 
-.goToPost:hover{
-  background-color: white;
-  color: #a11321;
+.goToPost:hover {
+  background-color: #ffffff;
+  color: #003B49;
 }
 
 /* Media query for larger screens */
@@ -86,5 +88,6 @@
 
   .post-card {
     margin: 0 auto; /* Center the post card */
+    margin-bottom: 15px;
   }
 }
