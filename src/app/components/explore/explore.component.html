@@ -1,17 +1,22 @@
 <div class="explore-container">
-    <div *ngIf="allUsers.length > 0; else noUsers">
-      <div *ngFor="let user of allUsers" class="user-card">
-        <div class="user-info">
-          <img src="assets/dp.jpg" alt="Profile Picture" class="profile-picture">
-          <div class="user-details">
-            <h3>{{ user?.fullName }}</h3>
-          </div>
+  <div *ngIf="allUsers.length > 0; else noUsers">
+    <div *ngFor="let user of allUsers" class="user-card">
+      <div class="user-info">
+        <img src="assets/dp.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="user-details">
+          <h3>{{ user?.fullName }}</h3>
         </div>
-        <button mat-button class="follow-button" (click)="followUser(user)">Follow</button>
       </div>
+      <button mat-button 
+              class="follow-button" 
+              [ngClass]="{'followed-button': user.followed}" 
+              [disabled]="user.followed" 
+              (click)="followUser(user)">
+        {{ user.followed ? 'Followed' : 'Follow' }}
+      </button>
     </div>
-    <ng-template #noUsers>
-      <p>No users found to follow.</p>
-    </ng-template>
   </div>
-  
+  <ng-template #noUsers>
+    <p>No users found to follow.</p>
+  </ng-template>
+</div>

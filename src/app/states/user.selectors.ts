@@ -10,3 +10,9 @@ export const selectUserId = createSelector(
   (state: UserState) => state.userId
 );
 
+// Selector to get the user ID
+export const selectfullName = createSelector(
+  selectUserState,
+  (state: UserState) => state.fullName
+);
+

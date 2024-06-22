@@ -4,6 +4,7 @@ import * as UserActions from './user.actions';
 
 export const initialState: UserState = {
   userId: null,
+  fullName:null
 };
 
 export const userReducer = createReducer(
@@ -15,5 +16,13 @@ export const userReducer = createReducer(
   on(UserActions.clearUserId, state => ({
     ...state,
     userId: null
+  })),
+  on(UserActions.setFullName, (state, { fullName }) => ({
+    ...state,
+    fullName
+  })),
+  on(UserActions.clearFullName, state => ({
+    ...state,
+    fullName: null
   })),
 );

@@ -5,7 +5,7 @@ import { SignupService } from '../../services/signup.service';
 import { CustomValidators } from '../../validations/CustomValidator';
 import { LoginService } from '../../services/login.service';
 import { AuthService } from '../../services/auth.service';
-import { setUserId } from '../../states/user.actions';
+import { setFullName, setUserId } from '../../states/user.actions';
 import { Store } from '@ngrx/store';
 import { UserState } from '../../states/user.state';
 
@@ -59,8 +59,12 @@ submit(): void {
         } else if (response.userData) {
           this.authService.login();
           console.log(response.userData);
+
           const userId = response.userData._id; // Assuming the user ID is in response.userData.id
+          const fullName=response.userData.fullName
+          
           this.store.dispatch(setUserId({ userId }));
+          this.store.dispatch(setFullName({ fullName }));
           this.router.navigate(['/home']);
         }
       },

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environment/environement';
 
@@ -15,7 +15,9 @@ export class PostService {
     return this.http.post(`${this.baseUrl}` + '/addPost', userData,{withCredentials: true})
   }
 
-  getAllPublicPost() {
-    return this.http.get(`${this.baseUrl}` + '/getAllPublicPost',{withCredentials: true})
+  getAllPublicPost(userId:string) {
+    const url = `${this.baseUrl}/getAllPublicPost`; 
+    const params = new HttpParams().set('userId', userId); 
+    return this.http.get(url, { params });
   }
 }

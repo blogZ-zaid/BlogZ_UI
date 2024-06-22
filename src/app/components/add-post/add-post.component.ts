@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { UserState } from '../../states/user.state';
 import { Store, select } from '@ngrx/store';
-import { selectUserId } from '../../states/user.selectors';
+import { selectUserId, selectfullName } from '../../states/user.selectors';
 
 @Component({
   selector: 'app-add-post',
@@ -20,6 +20,7 @@ export class AddPostComponent implements OnInit {
   });
 
   userId: string = "";
+  fullName:string="";
   selectedFile: File | null = null;
   previewUrl: any = null;
 
@@ -33,6 +34,12 @@ export class AddPostComponent implements OnInit {
     this.store.pipe(select(selectUserId)).subscribe(userId => {
       this.userId = userId!;
     });
+    this.store.pipe(select(selectfullName)).subscribe(fullname => {
+      this.fullName = fullname!;
+    });
+
+    console.log("UserId",this.userId)
+    console.log("FullName",this.fullName)
   }
 
   get title() {
@@ -69,7 +76,8 @@ export class AddPostComponent implements OnInit {
         title: this.addPostForm.value.title,
         description: this.addPostForm.value.description,
         privacy: this.addPostForm.value.privacy, // Change visibility to privacy in the submitted data
-        userId: this.userId 
+        userId: this.userId ,
+        fullName:this.fullName
       };
 
       const formData = new FormData();
@@ -77,6 +85,7 @@ export class AddPostComponent implements OnInit {
       formData.append('description', userData.description!);
       formData.append('privacy', userData.privacy!);
       formData.append('userId', userData.userId);
+      formData.append('fullName', userData.fullName);
       if (this.selectedFile) {
         formData.append('image', this.selectedFile);
       }
